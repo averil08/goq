@@ -44,7 +44,7 @@ data class QueueTicket(
 )
 
 @Composable
-fun Queue(modifier: Modifier = Modifier) {
+fun Queue(modifier: Modifier = Modifier,  onBackClick: () -> Unit = {} ) {
     var currentTicket by remember { mutableStateOf<QueueTicket?>(null) }
     var showTicketDialog by remember { mutableStateOf(false) }
     var showAlertDialog by remember { mutableStateOf(false) }
@@ -300,7 +300,7 @@ fun Queue(modifier: Modifier = Modifier) {
                 .requiredWidth(width = 333.dp)
                 .requiredHeight(height = 41.dp)
                 .clip(shape = RoundedCornerShape(20.dp))
-                .clickable { currentTicket = null }
+                .clickable { onBackClick() }
         ) {
             Box(
                 modifier = Modifier
